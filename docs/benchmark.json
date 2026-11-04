@@ -1,0 +1,327 @@
+{
+  "machine": {
+    "date": "2026-11-04 11:43 UTC",
+    "cpu": "11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz",
+    "coeurs_logiques": 8,
+    "ram_go": 15.3,
+    "python": "3.12.14",
+    "pyspark": "4.2.1",
+    "duckdb": "1.5.6",
+    "java": "openjdk version \"21.0.13\" 2026-10-20",
+    "spark": {
+      "master": "local[2]",
+      "driver_memory": "3g",
+      "shuffle_partitions": 16
+    },
+    "duckdb_config": {
+      "threads": 2,
+      "memory_limit": "2.5GB"
+    },
+    "plafonds": {
+      "cgroup": "/user.slice/user-1000.slice/user@1000.service/app.slice/heavy-dvf-bench-1793792580.scope",
+      "cpu_coeurs_max": 1.0,
+      "memoire_max_go": 5.0
+    }
+  },
+  "repetitions": 2,
+  "mesures": [
+    {
+      "moteur": "spark",
+      "etape": "bronze",
+      "debut": "2026-11-04T12:43:00",
+      "mur_s": 367.6,
+      "etape_s": 357.5,
+      "demarrage_s": 9.3,
+      "cpu_s": 342.9,
+      "rss_max_mo": 3288,
+      "charge_1min": 2.2,
+      "part_bridee": 0.041,
+      "stats": {
+        "lignes": 20065182
+      },
+      "relances": 3,
+      "passage": 1
+    },
+    {
+      "moteur": "spark",
+      "etape": "silver",
+      "debut": "2026-11-04T13:18:06",
+      "mur_s": 612.0,
+      "etape_s": 598.8,
+      "demarrage_s": 12.3,
+      "cpu_s": 591.2,
+      "rss_max_mo": 3666,
+      "charge_1min": 3.4,
+      "part_bridee": 0.0,
+      "stats": {
+        "mutations": 7302732,
+        "ventes": 4138268
+      },
+      "relances": 1,
+      "passage": 1
+    },
+    {
+      "moteur": "spark",
+      "etape": "gold",
+      "debut": "2026-11-04T13:28:18",
+      "mur_s": 133.7,
+      "etape_s": 121.0,
+      "demarrage_s": 11.7,
+      "cpu_s": 128.8,
+      "rss_max_mo": 2812,
+      "charge_1min": 2.6,
+      "part_bridee": 0.0,
+      "stats": {
+        "prix_commune_annee": 115691,
+        "marche_france_mois": 120,
+        "marche_annee": 36,
+        "marche_semestre": 60,
+        "bordeaux_metropole": 316
+      },
+      "relances": 0,
+      "passage": 1
+    },
+    {
+      "moteur": "duckdb",
+      "etape": "bronze",
+      "debut": "2026-11-04T13:30:32",
+      "mur_s": 125.2,
+      "etape_s": 124.8,
+      "demarrage_s": 0.1,
+      "cpu_s": 121.2,
+      "rss_max_mo": 2924,
+      "charge_1min": 3.2,
+      "part_bridee": 0.0,
+      "stats": {
+        "lignes": 20065182
+      },
+      "relances": 0,
+      "passage": 1
+    },
+    {
+      "moteur": "duckdb",
+      "etape": "silver",
+      "debut": "2026-11-04T13:32:37",
+      "mur_s": 159.4,
+      "etape_s": 158.8,
+      "demarrage_s": 0.1,
+      "cpu_s": 153.6,
+      "rss_max_mo": 2832,
+      "charge_1min": 3.4,
+      "part_bridee": 0.0,
+      "stats": {
+        "mutations": 7302732,
+        "ventes": 4138268
+      },
+      "relances": 0,
+      "passage": 1
+    },
+    {
+      "moteur": "duckdb",
+      "etape": "gold",
+      "debut": "2026-11-04T13:35:16",
+      "mur_s": 9.4,
+      "etape_s": 9.0,
+      "demarrage_s": 0.1,
+      "cpu_s": 8.9,
+      "rss_max_mo": 571,
+      "charge_1min": 3.9,
+      "part_bridee": 0.0,
+      "stats": {
+        "prix_commune_annee": 115691,
+        "marche_france_mois": 120,
+        "marche_annee": 36,
+        "marche_semestre": 60,
+        "bordeaux_metropole": 316
+      },
+      "relances": 0,
+      "passage": 1
+    },
+    {
+      "moteur": "spark",
+      "etape": "bronze",
+      "debut": "2026-11-04T13:35:26",
+      "mur_s": 351.9,
+      "etape_s": 339.1,
+      "demarrage_s": 12.3,
+      "cpu_s": 338.1,
+      "rss_max_mo": 3320,
+      "charge_1min": 4.0,
+      "part_bridee": 0.0,
+      "stats": {
+        "lignes": 20065182
+      },
+      "relances": 0,
+      "passage": 2
+    },
+    {
+      "moteur": "spark",
+      "etape": "silver",
+      "debut": "2026-11-04T13:41:18",
+      "mur_s": 439.6,
+      "etape_s": 431.1,
+      "demarrage_s": 7.9,
+      "cpu_s": 405.4,
+      "rss_max_mo": 3623,
+      "charge_1min": 3.0,
+      "part_bridee": 0.068,
+      "stats": {
+        "mutations": 7302732,
+        "ventes": 4138268
+      },
+      "relances": 3,
+      "passage": 2
+    },
+    {
+      "moteur": "spark",
+      "etape": "gold",
+      "debut": "2026-11-04T14:14:25",
+      "mur_s": 89.6,
+      "etape_s": 81.7,
+      "demarrage_s": 7.5,
+      "cpu_s": 87.2,
+      "rss_max_mo": 2731,
+      "charge_1min": 2.5,
+      "part_bridee": 0.0,
+      "stats": {
+        "prix_commune_annee": 115691,
+        "marche_france_mois": 120,
+        "marche_annee": 36,
+        "marche_semestre": 60,
+        "bordeaux_metropole": 316
+      },
+      "relances": 1,
+      "passage": 2
+    },
+    {
+      "moteur": "duckdb",
+      "etape": "bronze",
+      "debut": "2026-11-04T14:17:28",
+      "mur_s": 94.2,
+      "etape_s": 94.0,
+      "demarrage_s": 0.1,
+      "cpu_s": 80.8,
+      "rss_max_mo": 2725,
+      "charge_1min": 2.2,
+      "part_bridee": 0.158,
+      "stats": {
+        "lignes": 20065182
+      },
+      "relances": 3,
+      "passage": 2
+    },
+    {
+      "moteur": "duckdb",
+      "etape": "silver",
+      "debut": "2026-11-04T14:24:22",
+      "mur_s": 113.4,
+      "etape_s": 113.0,
+      "demarrage_s": 0.1,
+      "cpu_s": 110.1,
+      "rss_max_mo": 2942,
+      "charge_1min": 3.4,
+      "part_bridee": 0.0,
+      "stats": {
+        "mutations": 7302732,
+        "ventes": 4138268
+      },
+      "relances": 1,
+      "passage": 2
+    },
+    {
+      "moteur": "duckdb",
+      "etape": "gold",
+      "debut": "2026-11-04T14:26:15",
+      "mur_s": 5.7,
+      "etape_s": 5.4,
+      "demarrage_s": 0.1,
+      "cpu_s": 5.3,
+      "rss_max_mo": 563,
+      "charge_1min": 3.8,
+      "part_bridee": 0.0,
+      "stats": {
+        "prix_commune_annee": 115691,
+        "marche_france_mois": 120,
+        "marche_annee": 36,
+        "marche_semestre": 60,
+        "bordeaux_metropole": 316
+      },
+      "relances": 0,
+      "passage": 2
+    }
+  ],
+  "synthese": [
+    {
+      "moteur": "spark",
+      "etape": "bronze",
+      "passages": 2,
+      "mur_s": 359.8,
+      "mur_min_s": 351.9,
+      "mur_max_s": 367.6,
+      "etape_s": 348.3,
+      "cpu_s": 340.5,
+      "rss_max_mo": 3320,
+      "part_bridee_max": 0.041
+    },
+    {
+      "moteur": "spark",
+      "etape": "silver",
+      "passages": 2,
+      "mur_s": 525.8,
+      "mur_min_s": 439.6,
+      "mur_max_s": 612.0,
+      "etape_s": 515.0,
+      "cpu_s": 498.3,
+      "rss_max_mo": 3666,
+      "part_bridee_max": 0.068
+    },
+    {
+      "moteur": "spark",
+      "etape": "gold",
+      "passages": 2,
+      "mur_s": 111.6,
+      "mur_min_s": 89.6,
+      "mur_max_s": 133.7,
+      "etape_s": 101.3,
+      "cpu_s": 108.0,
+      "rss_max_mo": 2812,
+      "part_bridee_max": 0.0
+    },
+    {
+      "moteur": "duckdb",
+      "etape": "bronze",
+      "passages": 2,
+      "mur_s": 109.7,
+      "mur_min_s": 94.2,
+      "mur_max_s": 125.2,
+      "etape_s": 109.4,
+      "cpu_s": 101.0,
+      "rss_max_mo": 2924,
+      "part_bridee_max": 0.158
+    },
+    {
+      "moteur": "duckdb",
+      "etape": "silver",
+      "passages": 2,
+      "mur_s": 136.4,
+      "mur_min_s": 113.4,
+      "mur_max_s": 159.4,
+      "etape_s": 135.9,
+      "cpu_s": 131.8,
+      "rss_max_mo": 2942,
+      "part_bridee_max": 0.0
+    },
+    {
+      "moteur": "duckdb",
+      "etape": "gold",
+      "passages": 2,
+      "mur_s": 7.6,
+      "mur_min_s": 5.7,
+      "mur_max_s": 9.4,
+      "etape_s": 7.2,
+      "cpu_s": 7.1,
+      "rss_max_mo": 571,
+      "part_bridee_max": 0.0
+    }
+  ]
+}
