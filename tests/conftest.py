@@ -9,6 +9,13 @@ from dvf_lakehouse.pipeline import ETAPES, executer
 FIXTURE = Path(__file__).parent / "fixtures" / "dvf_fixture.csv.gz"
 
 
+def pytest_configure(config):
+    # --basetemp=.tmp/pytest (pyproject.toml) : pytest crée le dossier mais pas son parent,
+    # absent d'un clone neuf.
+    if config.option.basetemp:
+        Path(config.option.basetemp).parent.mkdir(parents=True, exist_ok=True)
+
+
 @pytest.fixture(scope="session")
 def fixture_csv() -> Path:
     return FIXTURE
