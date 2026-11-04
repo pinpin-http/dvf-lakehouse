@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Données téléchargées, lac et fichiers temporaires des moteurs
+data/
+lake/
+.tmp/
+.scratch/
+spark-warehouse/
+metastore_db/
+derby.log
