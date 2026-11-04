@@ -78,13 +78,16 @@ def comparer_sources(con: duckdb.DuckDBPyConnection, source_a: str, source_b: st
             if valeurs.get(c):
                 suffixe = ""
                 if f"{c}__ecart" in valeurs:
-                    suffixe = f" (écart relatif max {valeurs[f'{c}__ecart']:.1e})"
+                    suffixe = f" (écart relatif max {_sci(valeurs[f'{c}__ecart'])})"
                 details.append(f"{c} : {valeurs[c]} valeurs différentes{suffixe}")
             if f"{c}__ecart" in valeurs and valeurs[f"{c}__ecart"] is not None:
                 ecarts_max[c] = valeurs[f"{c}__ecart"]
         if ecarts_max and not details:
             pire = max(ecarts_max, key=ecarts_max.get)
-            details.append(f"écart relatif max {ecarts_max[pire]:.1e} ({pire})")
+            if ecarts_max[pire] == 0:
+                details.append("flottants identiques au bit près")
+            else:
+                details.append(f"écart relatif max {_sci(ecarts_max[pire])} sur {pire}")
             return Ecart(nom, True, n_a, details)
     return Ecart(nom, not details, n_a, details)
 
@@ -107,6 +110,11 @@ def comparer(lake_dir: Path | None = None, rtol: float = TOLERANCE_RELATIVE) -> 
     return ecarts
 
 
+def _sci(x: float) -> str:
+    """Notation scientifique à la française : 2.9e-10 -> "2,9e-10"."""
+    return f"{x:.1e}".replace(".", ",").replace("e-0", "e-")
+
+
 def _n(x: int) -> str:
     return f"{x:,}".replace(",", " ")
 
@@ -116,13 +124,16 @@ def rapport_markdown(ecarts: list[Ecart], rtol: float = TOLERANCE_RELATIVE) -> s
         "# Parité Spark / DuckDB",
         "",
         "Sorties des deux moteurs sur le jeu complet, jointes sur leur clé. Types de colonnes, "
-        f"entiers et chaînes : égalité stricte. Flottants : tolérance relative {rtol:g}.",
+        f"entiers et chaînes : égalité stricte. Flottants : tolérance relative {_sci(rtol).replace(',0', '')}.",
         "",
         "| Table | Lignes | Résultat |",
         "|---|---:|---|",
     ]
     for e in ecarts:
-        verdict = ("identique" if e.ok else "ÉCART") + (f" ; {'; '.join(e.details)}" if e.details else "")
+        if e.ok:
+            verdict = "identique" + (f" ({'; '.join(e.details)})" if e.details else "")
+        else:
+            verdict = "ÉCART : " + "; ".join(e.details)
         lignes.append(f"| {e.table} | {_n(e.lignes)} | {verdict} |")
     return "\n".join(lignes) + "\n"
 

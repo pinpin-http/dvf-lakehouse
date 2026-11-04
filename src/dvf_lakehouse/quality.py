@@ -56,7 +56,8 @@ class Verificateur:
         return self.con.execute(sql).fetchone()[0]
 
     def egal(self, couche: str, nom: str, obtenu, attendu) -> None:
-        self.controles.append(Controle(couche, nom, "ok" if obtenu == attendu else "echec", obtenu, f"= {attendu}"))
+        self.controles.append(Controle(couche, nom, "ok" if obtenu == attendu else "echec", obtenu,
+                                       f"= {_format(attendu)}"))
 
     def zero(self, couche: str, nom: str, sql: str) -> None:
         self.egal(couche, nom, self.valeur(sql), 0)
@@ -188,8 +189,12 @@ def verifier(engine: str, fichiers: list[Path] | None = None, lake_dir: Path | N
 def _format(valeur) -> str:
     if isinstance(valeur, dict):
         return "<br>".join(f"{k} : {_format(x)}" for k, x in valeur.items()) or "aucun"
+    if isinstance(valeur, bool):
+        return str(valeur)
     if isinstance(valeur, int):
         return f"{valeur:,}".replace(",", " ")
+    if isinstance(valeur, float):
+        return f"{valeur:g}".replace(".", ",")
     return str(valeur)
 
 
